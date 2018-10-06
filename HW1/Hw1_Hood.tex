@@ -1,0 +1,345 @@
+\documentclass[letterpaper,10pt]{article}
+\usepackage[top=2cm, bottom=1.5cm, left=1cm, right=1cm]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{\today}
+\chead{Algebraic Structures}
+\rhead{Justin Hood}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+\begin{document}
+\begin{description}
+\item[5.3]\hfill\\
+\begin{enumerate}
+\item We shall check that the vector space,
+\[\vect{V}=\bigg\{\begin{pmatrix}
+x \\
+y
+\end{pmatrix}\bigg|x,y\in\R\bigg\}=\R^2\]
+is a true vector space with
+\[\vect{u}+\vect{v}=\begin{pmatrix}
+x_u+x_v \\
+y_u+y_v
+\end{pmatrix}\]\\
+\[c\cdot\vect{u}=\begin{pmatrix}
+cx \\
+cy
+\end{pmatrix}\]
+Let,
+\[\vect{u}=\begin{pmatrix}
+x_1 \\
+y_1
+\end{pmatrix}, \vect{v}=\begin{pmatrix}
+x_2 \\
+y_2
+\end{pmatrix}, \vect{w}=\begin{pmatrix}
+x_3 \\
+y_3
+\end{pmatrix}, x_1,x_2,x_3,y_1,y_2,y_3\in\R\]
+We shall check the 10 conditions of a vector space as follows:
+\begin{enumerate}
+\item (Additive Closure) $\vect{u}+\vect{v}\in\vect{V}$
+\[\vect{u}+\vect{v}=\begin{pmatrix}
+x_1+x_2 \\
+y_1+y_2
+\end{pmatrix}=\begin{pmatrix}
+\alpha \\
+\beta
+\end{pmatrix}, \alpha,\beta\in\R\]
+Which is clearly in the original vector space.
+\item (Additive Commutativity) $\vect{u}+\vect{v}=\vect{v}+\vect{u}$
+\[\vect{u}+\vect{v}=\begin{pmatrix}
+x_1 \\
+y_1
+\end{pmatrix}+\begin{pmatrix}
+x_2 \\
+y_2
+\end{pmatrix}=\begin{pmatrix}
+x_1+x_2 \\
+y_1+y_2
+\end{pmatrix}=\begin{pmatrix}
+x_2+x_1 \\
+y_2+y_1
+\end{pmatrix}=\begin{pmatrix}
+x_2 \\
+y_2
+\end{pmatrix}+\begin{pmatrix}
+x_1 \\
+y_1
+\end{pmatrix}=\vect{v}+\vect{u}\]
+As desired.
+\item (Additive Associativity) $(\vect{u}+\vect{v})+\vect{w}=\vect{u}+(\vect{v}+\vect{w})$\\
+From before, we note $\vect{u}+\vect{v}=\begin{pmatrix}
+x_1+x_2 \\
+y_1+y_2
+\end{pmatrix}$, thus,
+\[(\vect{u}+\vect{v})+\vect{w}=\begin{pmatrix}
+x_1+x_2 \\
+y_1+y_2
+\end{pmatrix}+\begin{pmatrix}
+x_3 \\
+y_3
+\end{pmatrix}=\begin{pmatrix}
+x_1+x_2+x_3 \\
+y_1+y_2+y_3
+\end{pmatrix}=\begin{pmatrix}
+x_1 \\
+y_1
+\end{pmatrix}+\begin{pmatrix}
+x_2+x_3 \\
+y_2+y_3
+\end{pmatrix}=\vect{u}+(\vect{v}+\vect{w})\]
+As desired.
+\item (Zero) $\exists\vect{0}\in\vect{V}$ such that, $\vect{u}+\vect{0}=\vect{u}$\\
+Consider the vector, $\vect{0}=\begin{pmatrix}
+0 \\
+0
+\end{pmatrix}$. Then,
+\[\vect{u}+\vect{0}=\begin{pmatrix}
+x_1+0 \\
+y_1+0
+\end{pmatrix}=\begin{pmatrix}
+x_1 \\
+y_1
+\end{pmatrix}=\vect{u}\]
+As desired.
+\item (Additive Inverse) $\forall\vect{u}\in\vect{V}\ \exists\vect{w}\in\vect{V}$ such that $\vect{u}+\vect{w}=\vect{0}$.\\
+Consider the vector $\vect{w}=-\vect{u}=\begin{pmatrix}
+-x_1 \\
+-y_1
+\end{pmatrix}$. Then,
+\[\vect{u}+\vect{v}=\begin{pmatrix}
+x_1-x_1 \\
+y_1-y_1
+\end{pmatrix}=\begin{pmatrix}
+0 \\
+0
+\end{pmatrix}=\vect{0}\]
+As desired.\\\\
+Now, let $c,d\in\R$
+\item (Multiplicative Closure) $c\cdot\vect{u}\in\vect{V}$
+\[c\cdot\vect{u}=c\begin{pmatrix}
+x_1 \\
+y_1
+\end{pmatrix}=\begin{pmatrix}
+cx_1 \\
+cy_1
+\end{pmatrix}\in\R\]
+As the product of two real numbers is a real number.
+\item  (Distributivity) $(c+d)\cdot\vect{u}=c\cdot\vect{u}+d\cdot\vect{u}$
+\[(c+d)\cdot\vect{u}=(c+d)\begin{pmatrix}
+x_1 \\
+y_1
+\end{pmatrix}=\begin{pmatrix}
+(c+d)x_1 \\
+(c+d)y_1
+\end{pmatrix}=\begin{pmatrix}
+cx_1+dx_1 \\
+cy_1+dy_1
+\end{pmatrix}=c\vect{u}+d\vect{u}\]
+As desired.
+\item (Distributivity) $c\cdot(\vect{u}+\vect{v})=c\cdot\vect{u}+c\cdot\vect{v}$
+\[c\cdot(\vect{u}+\vect{v})=c\begin{pmatrix}
+x_1+x_2\\
+y_1+y_2
+\end{pmatrix}=\begin{pmatrix}
+c(x_1+x_2) \\
+c(y_1+y_2)
+\end{pmatrix}=\begin{pmatrix}
+cx_1+cx_2 \\
+cy_1+cy_2
+\end{pmatrix}=c\cdot\vect{u}+c\cdot\vect{v}\]
+As desired.
+\item (Associativity) $(cd)\cdot\vect{u}=c\cdot(d\cdot\vect{u})$
+\[(cd)\cdot\vect{u}=\begin{pmatrix}
+cdx_1 \\
+cdy_1
+\end{pmatrix}=c\cdot\begin{pmatrix}
+dx_1 \\
+dy_1
+\end{pmatrix}=c\cdot(d\cdot\vect{u})\]
+\item (Unity) $\vect{1}\cdot\vect{u}=\vect{u}$
+\[\vect{1}\cdot\vect{u}=\begin{pmatrix}
+1\cdot x_1 \\
+1\cdot y_1
+\end{pmatrix}=\begin{pmatrix}
+x_1 \\
+y_1
+\end{pmatrix}=\vect{u}\]
+As desired.\\
+Thus, we have shown that $\vect{V}$ is indeed a vector space.
+\end{enumerate}
+\item Check that $\C=\{x+iy\ \big|\ i^2=-1,\ x,y\in\R\}$ is a vector space.\\
+\begin{enumerate}
+\item We begin by defining the relevant operations where $\vect{u}=x_1+iy_1,\ \vect{v}=x_2+iy_2,\ \vect{w}=x_3+iy_3,\ c,d\in\R$,
+\[\vect{u}+\vect{v}=x_1+iy_1+x_2+iy_2=(x_1+x_2)+i(y_1+y_2)\]
+\[c\cdot\vect{u}=cx_1+i(cy_2)\]
+We prove the conditions as before.
+\begin{enumerate}
+\item (Additive Closure) $\vect{u}+\vect{v}\in\vect{V}$
+\[\vect{u}+\vect{v}=(x_1+x_2)+i(y_1+y_2)=\alpha+i\beta,\ \alpha,\beta\in\R\]
+Which is clearly in the original vector space.
+\item (Additive Commutativity) $\vect{u}+\vect{v}=\vect{v}+\vect{u}$
+\[\vect{u}+\vect{v}=(x_1+x_2)+i(y_1+y_2)=x_2+iy_2+x_1+iy_1=\vect{v}+\vect{u}\]
+As desired.
+\item (Additive Associativity) $(\vect{u}+\vect{v})+\vect{w}=\vect{u}+(\vect{v}+\vect{w})$\\
+\[(\vect{u}+\vect{v})+\vect{w}=((x_1+x_2)+i(y_1+y_2))+x_3+iy_3=(x_1+x_2+x_3)+i(y_1+y_2+y_3)=x_1+iy_1+(x_2+x_3)+i(y_2+y_3)\]
+\[=\vect{u}+(\vect{v}+\vect{w})\]
+As desired.
+\item (Zero) $\exists\vect{0}\in\vect{V}$ such that, $\vect{u}+\vect{0}=\vect{u}$\\
+Consider $\vect{0}=0$. Then,
+\[\vect{u}+\vect{0}=x_1+iy_1+0=x_1+iy_1=\vect{u}\]
+As desired.
+\item (Additive Inverse) $\forall\vect{u}\in\vect{V}\ \exists\vect{w}\in\vect{V}$ such that $\vect{u}+\vect{w}=\vect{0}$.\\
+Consider $\vect{w}=-x_1+i(-y_1)$. Then,
+\[\vect{u}+\vect{w}=x_1+iy_1+(-x_1)+i(-y_1)=0=\vect{0}\]
+As desired.\\\\
+Now, let $c,d\in\R$
+\item (Multiplicative Closure) $c\cdot\vect{u}\in\vect{V}$
+\[c\cdot\vect{u}=cx_1+i(cy_1)\in\vect{V}\]
+As the product of two real numbers is a real number.
+\item  (Distributivity) $(c+d)\cdot\vect{u}=c\cdot\vect{u}+d\cdot\vect{u}$
+\[(c+d)\cdot\vect{u}=(c+d)x_1+i((c+d)y_1)=cx_1+dx_1+icy_1+idy_1=cx_1+icy_1+dx_1+idy_1=c\cdot\vect{u}+d\cdot\vect{u}\]
+As desired.
+\item (Distributivity) $c\cdot(\vect{u}+\vect{v})=c\cdot\vect{u}+c\cdot\vect{v}$
+\[c\cdot(\vect{u}+\vect{v})=c\big((x_1+x_2)+i(y_1+y_2)\big)=cx_1+cx_2+i(cy_1)+i(cy_2)=c\vect{u}+c\vect{v}\]
+As desired.
+\item (Associativity) $(cd)\cdot\vect{u}=c\cdot(d\cdot\vect{u})$
+\[(cd)\cdot\vect{u}=cd(x_1+iy_1)=cdx_1+i(cdy_1)=c(dx_1+i(dy1))=c\cdot(d\cdot\vect{u})\]
+\item (Unity) $\vect{1}\cdot\vect{u}=\vect{u}$
+\[\vect{1}\cdot\vect{u}=1(x_1+iy_1)=x_1+iy_1=\vect{u}\]
+As desired.\\
+Thus, we have shown that $\C$ is indeed a vector space.
+\end{enumerate}
+\item What would happen if we were to use $\R$ as the base field instead?\\\\
+If we were to use $ \R $ as the base field, the same conditions would continue to hold as before in problem one. Instead of vectors of length 2, we would have vectors of length 1, but the same additive and multiplicative properties will hold, as shown in 2a. The results would merely lack the imaginary component, maintaining the $\R$ parameter.
+\end{enumerate}
+\addtocounter{enumi}{1}
+\item We consider the set of $2\times 4$ matrices:
+\[\vect{V}=\bigg\{\begin{pmatrix}
+a & b & c & d \\
+e & f & g & h
+\end{pmatrix}\bigg|a,b,c,d,e,f,g,h\in\C\bigg\}\]
+We first propose the definitions of the base functions for a vector space.\\
+First, addition. Let $\vect{u},\vect{v}\in\vect{V}$, and,
+\[\vect{u}+\vect{v}=\begin{pmatrix}
+a_1 & b_1 & c_1 & d_1 \\
+e_1 & f_1 & g_1 & h_1
+\end{pmatrix}+\begin{pmatrix}
+a_2 & b_2 & c_2 & d_2 \\
+e_2 & f_2 & g_2 & h_2
+\end{pmatrix}=\begin{pmatrix}
+a_1+a_2 & b_1+b_2 & c_1+c_2 & d_1+d_2 \\
+e_1+e_2 & f_1+f_2 & g_1+g_2 & h_1+h_2
+\end{pmatrix}\]
+We note that all of the entries of the resultant matrix are in $\C$, because we have proven in problem 2 that $\C$ is a vector space.\\
+Next, scalar multiplication. Let $\lambda\in\R$, and,
+\[\lambda\cdot\vect{u}=\lambda\begin{pmatrix}
+a & b & c & d \\
+e & f & g & h
+\end{pmatrix}=\begin{pmatrix}
+\lambda a & \lambda b & \lambda c & \lambda d \\
+\lambda e & \lambda f & \lambda g & \lambda h
+\end{pmatrix}\]
+The resultant matrix is again in our original vector space by similar reasoning to addition.\\\\
+We next define the zero vector in $\vect{V}$. Consider,
+\[\vect{0}=\begin{pmatrix}
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{pmatrix}\]
+We note that this matrix is in our vector space, and now consider,
+\[\vect{0}+\vect{u}=\begin{pmatrix}
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{pmatrix}+\begin{pmatrix}
+a & b & c & d \\
+e & f & g & h
+\end{pmatrix}=\begin{pmatrix}
+0+a & 0+b & 0+c & 0+d \\
+0+e & 0+f & 0+g & 0+h
+\end{pmatrix}=\begin{pmatrix}
+a & b & c & d \\
+e & f & g & h
+\end{pmatrix}=\vect{u}\]
+Thus, we have found a zero vector.\\\\
+Finally, we construct the additive inverse of each member of this set. Consider,
+\[\vect{w}=\begin{pmatrix}
+-a & -b & -c & -d \\
+-e & -f & -g & -h
+\end{pmatrix}\]
+From problem 2, we know that $(-a,-b,-c,-d,-e,-f,-g,-h)\in\C$, and thus,$\vect{w}\in\vect{V}$. Then,
+\[\vect{u}+\vect{w}=\begin{pmatrix}
+a & b & c & d \\
+e & f & g & h
+\end{pmatrix}+\begin{pmatrix}
+-a & -b & -c & -d \\
+-e & -f & -g & -h
+\end{pmatrix}=\begin{pmatrix}
+a-a & b-b & c-c & d-d \\
+e-e & f-f & g-g & h-h
+\end{pmatrix}=\begin{pmatrix}
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{pmatrix}=\vect{0}\]
+So we have found our additive inverse in general.
+\addtocounter{enumi}{4}
+\item Let $\vect{V}$ be a vector space, and $S$ be an arbitrary set. Show that $\vect{V}^S$, the set of functions $S\to\vect{V}$ is a vector space.
+\\\\
+To begin, we define $\vect{f},\vect{g},\vect{h}\in\vect{V}^S$, let $c,d$ be scalars, and let $s\in S$. Now, we define,
+\[(\vect{f}+\vect{g})(s)=\vect{f}(s)+\vect{g}(s)\]
+\[(c\vect{f})(s)=c(\vect{f}(s))\]
+We now prove the conditions of a vector field as above.
+\begin{enumerate}
+\item (Additive Closure)\\
+Consider, by our definition,
+\[(\vect{f}+\vect{g})(s)=\vect{f}(s)+\vect{g}(s)\]
+We note, that because both $\vect{f},\vect{g}$ are functions who map a set into a vector space $\vect{V}$, the sum above is also within $\vect{v}$ by definition of a vector space.
+\item (Additive Commutativity)\\
+Now,
+\[(\vect{f}+\vect{g})(s)=\vect{f}(s)+\vect{g}(s)=\vect{g}(s)+\vect{f}(s)=(\vect{g}+\vect{f})(s)\]
+As desired.
+\item (Additive Associativity)
+Recall $\vect{h}\in\vect{V}^S$. Then,
+\[((\vect{f}+\vect{g})+\vect{h})(s)=(\vect{f}+\vect{g})(s)+\vect{h}(s)=\vect{f}(s)+\vect{g}(s)+\vect{h}(s)=\vect{f}(s)+(\vect{g}+\vect{h})(s)=(\vect{f}+(\vect{g}+\vect{h}))(s)\]
+As desired.
+\item (Zero)\\
+Consider now the zero vector, $\vect{0}$ where, $\vect{0}(s)=0\in\vect{V}$ for all $s\in S$. We know that $0\in\vect{V}$ because we have previously defined $\vect{V}$ to be a vector space. Then,
+\[(\vect{f}+\vect{0})(s)=\vect{f}(s)+\vect{0}(s)=\vect{f}(s)+0=\vect{f}(s)\]
+As desired.
+\item (Additive Inverse)\\
+Consider now, $\vect{w}\in\vect{V}^S$, where $\vect{w}(s)=-\vect{f}(s)$. Then,
+\[(\vect{f}+\vect{w})(s)=\vect{f}(s)+\vect{w}(s)=\vect{f}(s)-\vect{f}(s)=\vect{0}(s)\]
+As desired.
+\item (Multiplicative Closure)\\
+Recall that $c,d$ are scalar quantities. Then by definition,
+\[(c\vect{f})(s)=c\vect{f}(s)\]
+Additionally, $\vect{f}(s)\in\vect{V}$. Thus, by our definition of a scalar multiple in a vector field, we know that $c\vect{f}(s)\in\vect{V}$ 
+\item (Distributivity)\\
+Now, consider,
+\[((c+d)\vect{f})(s)=(c+d)\vect{f}(s)=c\vect{f}(s)+d\vect{f}(s)\]
+As desired.
+\item (Distributivity)\\
+Next,
+\[(c(\vect{f}+\vect{g}))(s)=c((\vect{f}+\vect{g})(s))=c(\vect{f}(s)+\vect{g}(s))=c\vect{f}(s)+c\vect{g}(s)\]
+As desired.
+\item (Associativity)\\
+Next,
+\[(c(d\vect{f}))(s)=c(d(\vect{f}(s)))=(cd)(\vect{f}(s))=((cd)\vect{f})(s)\]
+As desired.
+\item (Unity)\\
+Finally, we consider $\vect{1}$ where $\vect{1}\vect{f}=\vect{f}$. Then,
+\[(\vect{1}\vect{f})(s)=\vect{1}\vect{f}(s)=\vect{f}(s)\]
+As desired.
+\end{enumerate}
+Thus, we have shown that $\vect{V}^S$ is a vector space.
+\end{enumerate}
+\end{description}
+
+
+\end{document}

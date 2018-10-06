@@ -1,0 +1,101 @@
+\documentclass[letterpaper,10pt]{article}
+\usepackage[top=2cm, bottom=1.5cm, left=1cm, right=1cm]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{fancyhdr, enumitem}
+\pagestyle{fancy}
+
+\lhead{\today}
+\chead{Algebraic Structures}
+\rhead{Justin Hood}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+\newcommand{\twoby}[2]{\begin{pmatrix}
+#1 \\
+#2
+\end{pmatrix}}
+\newcommand{\conj}{\bar{z}}
+\begin{document}
+\begin{description}
+\item[6.3]\hfill\\
+\begin{enumerate}[label=\alph*.]
+\item If $p\twoby{1}{2}=1$ and $p\twoby{2}{4}=3$ is $p$ linear?\\
+If $p$ is a linear function, then
+\[p(cx)=cp(x)\]
+Assuming to the contrary that $p$ is linear, we note,
+\[p\twoby{2}{4}=2p\twoby{1}{2}\]
+But,
+\[2p\twoby{1}{2}=2(1)=2\neq 3\]
+Thus, linearity has been violated. So $p$ is not linear.
+\item If $Q(x^2)=x^3$ and $Q(2x^2)=x^4$ is $Q$ linear?\\
+If $Q$ is a linear function, then
+\[Q(cx^2)=cQ(x^2)\]
+Assuming to the contrary that $Q$ is linear, we note,
+\[Q(2x^2)=2Q(x^2)\]
+But,
+\[2Q(x^2)=2x^3\neq x^4,\text{ in general}\]
+Since this does not hold for $x\neq 2$, $Q$ is not linear in general.
+\end{enumerate}
+\item[6.5]\hfill\\
+Let $P_n$ be the space of polynomials of degree $n$ or less on $t$. Let $L:P_2\to P_3$ such that $L(1)=4,\ L(t)=t^3,\ L(t^2)=t-1$.
+\begin{enumerate}[label=\alph*.]
+\item \begin{align*}
+L(1+t+2t^2) &=L(1)+L(t)+L(2t^2)\\
+&=L(1)+L(t)+2L(t^2)\\
+&=4+t^3+2(t-1)\\
+&=t^3+2t+2
+\end{align*}
+\item \begin{align*}
+L(a+bt+ct^2) &=L(a)+L(bt)+L(ct^2)\\
+&=aL(1)+bL(t)+cL(t^2)\\
+&=a(4)+bt^3+c(t-1)\\
+&=bt^3+ct+4a-c
+\end{align*}
+\item Find $a,b,c$ such that, $L(a+bt+ct^2)=1+3t+2t^3$\\\\
+From above, we have $L(a+bt+ct^2)=bt^3+ct+4a-c$. Then,
+\begin{align*}
+bt^3+ct+4a-c&=1+3t+2t^3
+\end{align*}
+So, we have
+\begin{align*}
+b&=2\\
+c&=3\\
+4a-c&=1\\
+\Leftrightarrow 4a-3&=1\\
+\Leftrightarrow a&=1
+\end{align*}
+\end{enumerate}
+\item[6.6]\hfill\\
+Let $\mathcal{I}:f\to\mathcal{I}f(x)$ where, $\mathcal{I}f(x):=\int_{0}^{x}f(t)dt$, where $f$ is a continuous function. Then we shall consider,
+\begin{align*}
+\mathcal{I}(af+bg) &= \int_{0}^{x}af(t)+bg(t)dt\\
+&=\int_{0}^{x}af(t)dt+\int_{0}^{x}bg(t)dt\\
+&=a\int_{0}^{x}f(t)dt+b\int_{0}^{x}g(t)dt\\
+&=a\mathcal{I}f+b\mathcal{I}g
+\end{align*}
+As required by the definition of a linear operator. Thus, $\mathcal{I}$ is indeed a linear operator on the space of continuous functions.
+\item[6.7]\hfill\\
+Let $z\in\C$, and let $\conj=x-iy$ and $c:\R^2\to\R^2$ such that $c(x,y)=(x,-y)$.
+\begin{enumerate}[label=\alph*.]
+\item Consider the following, $\alpha=(ax,ay)$ and $\beta=(bx,by)$. Then,
+\begin{align*}
+c(\alpha+\beta)&=c(ax+bx,ay+by)\\
+&=(ax+bx,-(ay+by))\\
+&=(ax,-ay)+(bx,-by)\\
+&=ac(x,y)+bc(x,y)
+\end{align*}
+As required by the definition of a linear map. Thus, $c$ is a linear map from $\R^2\to\R^2$.
+\item Consider the conjugate operator $\conj$. Let us assume that $\conj$ is a linear operator on $\C$. Then,
+\[\conj(\alpha+\beta)=\conj(\alpha)+\conj(\beta)\]
+\[\conj(c\alpha)=c\conj(\alpha),\ c\in\C\]
+Consider now, $\alpha=x+iy,\ c=i,\ i^2=-1$. Then,
+\[\conj(i\alpha)=\conj(ix-y)=-y-ix\]
+But,
+\[i\conj(\alpha)=i\big(x-iy\big)=y+ix\]
+A clear contradiction to the definition of a linear operator. Thus, $\conj$ cannot be a linear operator on $\C$.
+\end{enumerate}
+\end{description}
+\end{document}
