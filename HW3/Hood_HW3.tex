@@ -224,6 +224,44 @@ Now, we consider, $x^TI$. By definition of $I$, this is $x^T$. Then,
 \[x^TIy=x^Ty=\sum_{i=1}^nx_iy_i\]
 Thus, we see that $x\cdot y=x^TIy$
 \end{proof}
-\item[6]
+\item[6] Matrix of a linear transformation\\
+Let $V$ be a vector space where $B=(v_1,v_2)$ is an ordered basis. Define,
+\[L:V\to V\]
+with,
+\begin{align*}
+L(v_1) &= v_1+v_2\\
+L(v_2) &= 2v_1+v_2
+\end{align*}
+We now consider the following,
+\[(L(v_1),L(v_2)=\big((v_1,v_2)\begin{pmatrix}
+1\\
+1
+\end{pmatrix},(v_1,v_2)\begin{pmatrix}
+2\\
+1
+\end{pmatrix}\big)=(v_1,v_2)\begin{pmatrix}
+1 & 2\\
+1 & 1
+\end{pmatrix}
+\]
+Hence,
+\[L=\begin{pmatrix}
+1 & 2\\
+1 & 1
+\end{pmatrix},\ tr(L)=2\]
+We now conside the new basis,
+\[B'=(av_1+bv_2,cv_1+dv_2)\]
+Now,
+\begin{align*}
+L(av_1+bv_2) &= a(v_1+v_2)+b(2v_1+v_2) &&= (a+2b)v_1+(a+b)v_2\\
+L(cv_1+d_v2) &= c(v_1+v_2)+d(2v_1+v_2) &&= (c+2d)v_1+(c+d)v_2
+\end{align*}
+So, as before, we compute,
+\[L=\begin{pmatrix}
+a+2b & c+2d \\
+a+b & c+d
+\end{pmatrix},\ tr(L)=a+2b+c+d
+\]
+We see that the trace of this matrix is heavily influenced by the basis from which the transformation was constructed. Without making note of the bases used to compute the transformation, the trace is meaningless.
 \end{description}
 \end{document}
