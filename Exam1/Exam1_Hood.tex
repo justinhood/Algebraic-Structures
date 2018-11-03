@@ -1,0 +1,427 @@
+\documentclass[letterpaper,10pt]{article}
+\usepackage[top=2cm, bottom=1.5cm, left=1cm, right=1cm]{geometry}
+\usepackage{amsmath, amssymb, amsthm,graphicx, enumitem}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{\today}
+\chead{MATH 710 Assignment 3}
+\rhead{Justin Hood}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\inner}[2]{\langle #1,#2\rangle}
+\newtheorem{lem}{Lemma}
+
+\begin{document}
+\begin{description}
+\item[] \textbf{Question 1.}
+\begin{enumerate}[label=\alph*.]
+\item State and prove the Schwarz inequality.\\
+For any non-zero vectors $u$ and $v$ with innerproduct $\inner{}{}$
+\[|\inner{x}{y}|\leq||u||\ ||v||\]
+\begin{proof}
+Let $u$ and $v$ be non-zero vectors with inner product, $\inner{}{}$, and let $x$ be a scalar. Consider now,
+\[\inner{u+xv}{u+xv}=\inner{u}{u}+x\inner{u}{v}+x\inner{u}{v}+x^2\inner{v}{v}=\inner{u}{u}+2x\inner{u}{v}+x^2\inner{v}{v}\]
+By definition of the inner product, we know that it is greater than zero, so we have,
+\[\inner{u}{u}+2x\inner{u}{v}+x^2\inner{v}{v}\geq 0\]
+We shall expand this into the familiar quadratic form,
+\[\underbrace{||v||}_{\text{a}}x^2+\underbrace{2\inner{u}{v}}_{\text{b}}x+\underbrace{||u||^2}_{\text{c}}\geq 0\]
+For a quadratic function to be greater than or equal to zero, we need the $D\leq 0$, where $D$ is the discriminant of the quadratic formula. Because this condition is satisfied, we see that,
+\begin{align*}
+4\inner{u}{v}^2-4||u||^2||v||^2 &\leq 0\\
+\Leftrightarrow \inner{u}{v}^2 &\leq ||u||^2||v||^2
+\end{align*}
+Taking the principle root of both sides, we arrive at the equation,
+\[|\inner{u}{v}|\leq ||u||||v||\]
+Thus, we have proven the Schwarz inequality
+\end{proof}
+\item Prove for any $p$ and $q$ in $\R^n$,
+\[||p-q||\geq ||p||-||q||\]
+where $||||$ is the magnitude of a vector in $\R^n$ defined by $||x||=\bigg(\sum_{i}x_i\bigg)^{1/2}$ and the dot product of two vectors $x,y$ is defined as $x\cdot y=\sum_ix_iy_i$, which is the inner product in $\R^n$.
+\begin{proof}
+We consider,
+\[\big(||p||-||q||\big)^2\]
+Expanding, we arrive at,
+\[||p||^2-2||p||\ ||q||+||q||^2\]
+Note, from the Schwarz inequality,
+\[|\inner{x}{y}|\leq||u||\ ||v|| \Leftrightarrow -2|\inner{x}{y}|\geq -2||u||\ ||v||\]
+Thus,
+\[||p||^2-2||p||\ ||q||+||q||^2 \leq ||p||^2-2\inner{p}{q}+||q||^2\]
+But,
+\[||p-q||^2 = ||p||^2-2 p\cdot q +||q||^2=||p||^2-2\inner{p}{q}+||q||^2\]
+So, we have
+\[||p-q||^2\geq\big(||p||-||q||\big)^2\]
+Taking the principle root, we arrive at,
+\[||p-q||\geq\big|||p||-||q||\big|\]
+Finally, we note that $x\leq|x|\ \forall x\in \R$. So,
+\[||p-q||\geq\big|||p||-||q||\big|\geq ||p||-||q||\]
+As desired.
+\end{proof}
+\item Now, let $\theta$ be the angle between vector $p$ and $q$. We define,
+\[\cos(\theta)=\frac{p\cdot q}{||p||\ ||q||}\]
+Consider now, the Schwarz inequality as applied to $\R^n$. Our inner product becomes the dot product, and we have,
+\begin{align*}
+p\cdot q &\leq||p||\ ||q||\\
+-||p||\ ||q||\leq  p\cdot q &\leq||p||\ ||q||\\
+-1\leq \frac{p\cdot q}{||p||\ ||q||}&\leq1
+\end{align*}
+So, we see that the range of $\cos(\theta)$ is $[-1,1]$
+\end{enumerate}
+\item \textbf{Question 2.}
+\begin{enumerate}[label=\alph*.]
+\item A subset $U$ of a vector space $V$ is a subspace of $V$ if $U$ is a vector space with the same operations as $V$.
+\item Prove that the intersection between two subspaces of a vector space is also a subspace.
+\begin{proof}
+Let $A$ and $B$ be distinct subspaces of the vector space $V$, and let $W=A\cap B$.\\
+First, we note that by the definition of a subspace, $\vec{0}\in A,B$. Thus, $\vec{0}\in W$. So, we have the zero vector.\\
+Second, consider arbitrary elements $x,y\in W$. By construction of $W$, we know that $x,y\in A$ and $x,y\in B$. Because $A$ and $B$ are subspaces of $V$, we know that $x+y\in A$ and $x+y\in B$. Thus, we see that $x+y\in W$. So, $W$ is closed under addition.\\
+Finally, we consider $c$, a scalar value. Then, $\forall x\in W$, we know that both $x$ and $cx$ are in $A$ and $B$ because they are subspaces. Thus, $cx\in W\ \forall x\in W$, and we see that $W$ is closed under scalar multiplication.\\
+So, we may conclude that $W$ is also a subspace of $V$.
+\end{proof}
+\item Prove that the union between two subspaces of a vector space is also a subspace.\\
+\begin{proof}
+We consider an example. Let $A=\{(x,0)|x\in \R\}$, and $B=\{(0,y)|y\in \R\}$, i.e. the $x$ and $y$ axes. We know that these sets are subspaces of the vector space $\R^2$. Let us now construct,
+\[W=\{(x,0),(0,y)|x,y\in \R\}=A\cup B\]
+and consider,
+\[x^*=(1,0),\ y^*(0,1)\]
+By definition, $x^*$ and $y^*$ are in $W$, but,
+\[x^*+y^*=(1,1)\not\in W\]
+So, $W$ is not closed under addition, a violation of the definition of a vector subspace. Thus, we have reached a contradiction. Hence, in general, a set formed from the union of two vector subspaces will not also be a subspace.
+\end{proof}
+\end{enumerate}
+\item \textbf{Question 3.} Let,
+\[A=\begin{bmatrix}
+2 & 1 \\
+3 & -1
+\end{bmatrix}\]
+\begin{enumerate}[label=\alph*.]
+\item Compute $A^TA^{-1}$. First, we compute $A^{-1}$ by finding $det(A)$.\[\begin{vmatrix}
+2 & 1 \\
+3 & -1
+\end{vmatrix}=(2)(-1)-(1)(3)=-5\]
+Then,
+\[A^{-1}=\frac{1}{-5}\begin{bmatrix}
+-1 & -1 \\
+-3 & 2
+\end{bmatrix}\]
+So, we may compute,
+\[A^TA^{-1}=\frac{1}{-5}\begin{bmatrix}
+2 & 3\\
+1 & -1
+\end{bmatrix}\begin{bmatrix}
+-1 & -1\\
+-3 & 2
+\end{bmatrix}=\frac{1}{-5}\begin{bmatrix}
+-2-9 & -2+6 \\
+-1+3 & -1-2
+\end{bmatrix}=\begin{bmatrix}
+\frac{11}{5} & \frac{-4}{5}\\
+\frac{-2}{5} & \frac{3}{5}
+\end{bmatrix}\]
+\item A matrix $A$ is called symmetric if
+\[A=A^T\]
+Here,
+\[A=\begin{bmatrix}
+2 & 1 \\
+3 & -1
+\end{bmatrix}\neq \begin{bmatrix}
+2 & 3 \\
+1 & -1
+\end{bmatrix}=A^T\]
+So $A$ is not symmetric.
+\item Let $f(x)=2x^2-2$. What is the trace of $f(A)$?\\
+We begin by computing
+\[f(A)=2A^2-2I\]
+\[A^2=\begin{bmatrix}
+2 & 1 \\
+3 & -1
+\end{bmatrix} \begin{bmatrix}
+2 & 1 \\
+3 & -1
+\end{bmatrix}=\begin{bmatrix}
+4+3 & 2-1 \\
+6-3 & 3+1
+\end{bmatrix}=\begin{bmatrix}
+7 & 1\\
+3 & 4
+\end{bmatrix} \]
+Then,
+\[f(A)=2A^2-2I=2\begin{bmatrix}
+7 & 1\\
+3 & 4
+\end{bmatrix}-2\begin{bmatrix}
+1 & 0\\
+0 & 1
+\end{bmatrix}=\begin{bmatrix}
+14 & 2\\
+6 & 8
+\end{bmatrix}-\begin{bmatrix}
+2 & 0\\
+0 & 2
+\end{bmatrix}=\begin{bmatrix}
+12 & 2\\
+6 & 6
+\end{bmatrix} \]
+Then,
+\[tr(f(A))=\sum_iA_{ii}=12+6=18\]
+\end{enumerate}
+\item \textbf{Question 4.}
+Let A be any 2x2 matrix. Then,
+\[\frac{1}{2}(tr(A))^2-\frac{1}{2}(tr(A^2))-det(A)=0\]
+\begin{proof}
+Let $A$ be an arbirtrary matrix of dimension $2\times2$. With elements $a,b,c,d$ constructed as,
+\[A=\begin{bmatrix}
+a & b\\
+c & d
+\end{bmatrix}\]
+Consider first,
+\[tr(A)=a+d\]
+Then
+\[\frac{1}{2}(tr(A))^2=\frac{1}{2}(a+d)^2=\frac{a^2}{2}+ad+\frac{d^2}{2}\]
+Next,
+\[A^2=AA=\begin{bmatrix}
+a & b\\
+c & d
+\end{bmatrix}\begin{bmatrix}
+a & b\\
+c & d
+\end{bmatrix}=\begin{bmatrix}
+a^2+bc & ab+bd\\
+ac+cd & bc+d^2
+\end{bmatrix} \]
+So,
+\[tr(A^2)=a^2+2bc+d^2\Leftrightarrow \frac{1}{2}(tr(A^2))=\frac{a^2}{2}+bc+\frac{d^2}{2} \]
+Finally,
+\[\begin{vmatrix}
+a & b\\
+c & d
+\end{vmatrix}=ad-bc \]
+So,
+\begin{align*}
+\frac{1}{2}(tr(A))^2-\frac{1}{2}(tr(A^2))-det(A) &= (\frac{a^2}{2}+ad+\frac{d^2}{2})-(\frac{a^2}{2}+bc+\frac{d^2}{2})-(ad-bc)\\
+&=(ad-bc)-(ad-bc)\\
+&=0
+\end{align*}
+As desired.
+\end{proof}
+\item \textbf{Question 5.}
+Let $L$ be the linear transformation from $\R^3\to \R^3$ given by,
+\[L(x,y,z)=(-2x-y+z,-x-2y+z,x+y-2z)\]
+We consider the construction of $L$ in matrix form, i.e.
+\[L=\begin{bmatrix}
+L_{11} & L_{12} & L_{13} \\
+L_{21} & L_{22} & L_{23} \\
+L_{31} & L_{32} & L_{33}
+\end{bmatrix} \]
+Such that,
+\[\begin{bmatrix}
+L_{11} & L_{12} & L_{13} \\
+L_{21} & L_{22} & L_{23} \\
+L_{31} & L_{32} & L_{33}
+\end{bmatrix}\begin{pmatrix}
+x\\
+y\\
+z
+\end{pmatrix}=\begin{pmatrix}
+-2x-y+z \\
+-x-2y+z \\
+x+y-2z
+\end{pmatrix} \]
+From this definition, it is clear that the rows of $L$ are constructed as the coefficients for each row of the output vector, thus,
+\[L=\begin{bmatrix}
+-2 & -1 & 1\\
+-1 & -2 & 1\\
+1 & 1 & -2
+\end{bmatrix} \]
+Consider now, the computations of the eigenvalues of this matrix as $det(L-\lambda I)=0$ So,
+\begin{align*}
+\det(L-\lambda I) &= \begin{vmatrix}
+-2-\lambda & -1 & 1\\
+-1 & -2-\lambda & 1\\
+1 & 1 & -2-\lambda
+\end{vmatrix}\\
+&=(-2-\lambda)((-2-\lambda)^2-1)-(-1)(2+\lambda-1)+(1)(-1+2+\lambda)\\
+&=-\lambda^3-6\lambda^2-9\lambda-4
+\end{align*}
+Plotting this characteristic polynomial, we see that $\lambda=-4$ is a root, as well as $\lambda=-1$ being a multiple root. Thus, we have our three roots of this polynomial, $\lambda_1=-4,\ \lambda_2=\lambda_3=-1$. We begin construction of the eigenvectors as follows,
+\[(L-\lambda_1I)\vec{e}_1=\vec{0},\ (L-\lambda_2I)\vec{e}_2=\vec{0},\ (L-\lambda_3I)\vec{e}_3=\vec{0}\]
+\begin{align*}
+(L-\lambda_1I)\vec{e}_1 &=\begin{bmatrix}
+2 & -1 & 1\\
+-1 & 2 & 1\\
+1 & 1 & 2
+\end{bmatrix}\begin{bmatrix}
+\varepsilon_1\\
+\varepsilon_2\\
+\varepsilon_3
+\end{bmatrix}\\
+&=\begin{bmatrix}
+2 & -1 & 1\\
+0 & \frac{3}{2} & \frac{3}{2}\\
+0 & \frac{3}{2} & \frac{3}{2}
+\end{bmatrix}\begin{bmatrix}
+\varepsilon_1\\
+\varepsilon_2\\
+\varepsilon_3
+\end{bmatrix} && R_2+=\frac{1}{2}R_1,\ R_3-=\frac{1}{2}R_1\\
+&=\begin{bmatrix}
+2 & -1 & 1\\
+0 & 1 & 1\\
+0 & 0 & 0
+\end{bmatrix}\begin{bmatrix}
+\varepsilon_1\\
+\varepsilon_2\\
+\varepsilon_3
+\end{bmatrix} && R_2=\frac{2}{3}R_2,\ R_3-=R_2\\
+&=\begin{bmatrix}
+1 & 0 & 1\\
+0 & 1 & 1\\
+0 & 0 & 0
+\end{bmatrix}\begin{bmatrix}
+\varepsilon_1\\
+\varepsilon_2\\
+\varepsilon_3
+\end{bmatrix} && R_1+=R_2,\ R_1=\frac{1}{2}R_1\\
+\end{align*}
+Setting equal to $\vec{0}$ we find,
+\[\begin{bmatrix}
+1 & 0 & 1\\
+0 & 1 & 1\\
+0 & 0 & 0
+\end{bmatrix}\begin{bmatrix}
+\varepsilon_1\\
+\varepsilon_2\\
+\varepsilon_3
+\end{bmatrix}=\begin{bmatrix}
+0\\
+0\\
+0
+\end{bmatrix}\]
+\[\varepsilon_1=-\varepsilon_3,\ \ \varepsilon_2=-\varepsilon_3\]
+So, taking $\varepsilon_3=1$ for simplicity,
+\[\lambda_1 \Rightarrow \vec{e}_1=\begin{bmatrix}
+-1 \\
+-1\\
+1
+\end{bmatrix}\]
+Similarly,
+\begin{align*}
+(L-\lambda_{2,3}I)\vec{e}_{2,3}&=\begin{bmatrix}
+-1 & -1 & 1\\
+-1 & -1 & 1\\
+1 & 1 & -1
+\end{bmatrix}\begin{bmatrix}
+\varepsilon_1\\
+\varepsilon_2\\
+\varepsilon_3
+\end{bmatrix}\\
+&=\begin{bmatrix}
+1 & 1 & -1 \\
+0 & 0 & 0 \\
+0 & 0 & 0
+\end{bmatrix} && R_2-=R_1,\ R_3+=R_1,\ R_1=-R_1
+\end{align*}
+Setting equal to $\vec{0}$ we find,
+\[\begin{bmatrix}
+1 & 1 & -1\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{bmatrix}\begin{bmatrix}
+\varepsilon_1\\
+\varepsilon_2\\
+\varepsilon_3
+\end{bmatrix}=\begin{bmatrix}
+0\\
+0\\
+0
+\end{bmatrix}\]
+\[\varepsilon_1+\varepsilon_2=\varepsilon_3\]
+Here, we must fix two variables to arrive at a vector, thus we have multiple eigenvectors:
+\[\lambda_2,\ \varepsilon_1=0,\ \varepsilon_2=1 \Rightarrow \vec{e}_2=\begin{bmatrix}
+0\\
+1\\
+1
+\end{bmatrix} \]
+\[\lambda_3,\ \varepsilon_1=1,\ \varepsilon_2=0 \Rightarrow \vec{e}_3=\begin{bmatrix}
+1\\
+0\\
+1
+\end{bmatrix} \]
+Finally, as a check, we apply the linear transformation $L$ onto each of these vectors to see if they are true eigenvectors.
+\[L\vec{e}_1=\begin{bmatrix}
+-2 & -1 & 1\\
+-1 & -2 & 1\\
+1 & 1 & -2
+\end{bmatrix}\begin{bmatrix}
+-1\\
+-1\\
+1
+\end{bmatrix}=\begin{bmatrix}
+2+1+1\\
+1+2+1\\
+-1-1-2
+\end{bmatrix}=\begin{bmatrix}
+4\\
+4\\
+-4
+\end{bmatrix}=-4\begin{bmatrix}
+-1\\
+-1\\
+1
+\end{bmatrix}=\lambda_1\vec{e}_1 \]
+\[L\vec{e}_2=\begin{bmatrix}
+-2 & -1 & 1\\
+-1 & -2 & 1\\
+1 & 1 & -2
+\end{bmatrix}\begin{bmatrix}
+0\\
+1\\
+1
+\end{bmatrix}=\begin{bmatrix}
+0-1+1\\
+0-2+1\\
+0+1-2
+\end{bmatrix}=\begin{bmatrix}
+0\\
+-1\\
+-1
+\end{bmatrix}=-1\begin{bmatrix}
+0\\
+1\\
+1
+\end{bmatrix}=\lambda_2\vec{e}_2 \]
+\[L\vec{e}_3=\begin{bmatrix}
+-2 & -1 & 1\\
+-1 & -2 & 1\\
+1 & 1 & -2
+\end{bmatrix}\begin{bmatrix}
+1\\
+0\\
+1
+\end{bmatrix}=\begin{bmatrix}
+-2+0+1\\
+-1+0+1\\
+1+0-2
+\end{bmatrix}=\begin{bmatrix}
+-1\\
+0\\
+-1
+\end{bmatrix}=-1\begin{bmatrix}
+1\\
+0\\
+1
+\end{bmatrix}=\lambda_3\vec{e}_3 \]
+Hence, we hace found the eigenvalues and the eigenvectors associated with them. To test whether these vectors are linearly independent, we need,
+\[det([\vec{e}_1,\vec{e}_2,\vec{e}_3])\neq 0\]
+Checking,
+\[\begin{vmatrix}
+-1 & 0 & 1\\
+-1 & 1 & 0\\
+1 & 1 & 1
+\end{vmatrix}=-1(1-0)+0+1(-1-1)=-1-2=-3\neq 0\]
+Thus, our eigenvectors are independent.
+\end{description}
+\end{document}
