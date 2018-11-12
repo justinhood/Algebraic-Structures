@@ -1,0 +1,265 @@
+\documentclass[letterpaper,10pt]{article}
+\usepackage[top=2cm, bottom=1.5cm, left=1cm, right=1cm]{geometry}
+\usepackage{amsmath, amssymb, amsthm,graphicx,tikz}
+\usetikzlibrary{arrows}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{\today}
+\chead{MATH 720 Homework}
+\rhead{Justin Hood}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newtheorem{lem}{Lemma}
+
+\begin{document}
+\begin{enumerate}
+\item Determine if $x-x^3\in span\{x^2,2x+x^2,x+x^3\}$\\
+Let $\alpha =x^2$, $\beta =2x+x^2$, and $\gamma =x+x^3$, and consider,
+\[-\alpha+\beta-\gamma=-(x^2)+(2x+x^2)-(x+x^3)=(2x-x)+(x^2-x^2)+(-x^3)=x-x^3\]
+Thus, we see that $x-x^3$ is the linear combination of elements of the set, and thus is in the span.
+\item Let $U$ and $W$ be subspaces of $V$. Are:
+\begin{enumerate}
+\item $U\cup W$
+\item $U\cap W$
+\end{enumerate}
+
+\begin{enumerate}
+\item No. Consider the vector space, $\R^3$, with subspaces consisting of the x-axis and y-axis respectibely. i.e. $U=\{\{x,0,0\}|x\in \R\}$, $W=\{\{0,y,0\}|y\in \R\}$ (Shown below)
+\begin{center}
+\resizebox{3in}{3in}{%
+\begin{tikzpicture}[x=0.5cm,y=0.5cm,z=0.3cm,>=stealth]
+% The axes
+\draw[very thick, blue] (xyz cs:x=-13.5) -- (xyz cs:x=13.5) node[above] {$x$};
+\draw[->] (xyz cs:y=-13.5) -- (xyz cs:y=13.5) node[right] {$y$};
+\draw[->] (xyz cs:z=-13.5) -- (xyz cs:z=13.5) node[above] {$z$};
+% The thin ticks
+\foreach \coo in {-13,-12,...,13}
+{
+  \draw (\coo,-1.5pt) -- (\coo,1.5pt);
+  \draw (-1.5pt,\coo) -- (1.5pt,\coo);
+  \draw (xyz cs:y=-0.15pt,z=\coo) -- (xyz cs:y=0.15pt,z=\coo);
+}
+% The thick ticks
+% Dashed lines for the points P, Q
+
+% Dots and labels for P, Q
+\node[fill,circle,inner sep=1.5pt,label={}] at (0,0,0) {};
+%\node[fill,circle,inner sep=1.5pt,label={above:$P(3,0,5)$}] at (3,5) {};
+% The origin
+\end{tikzpicture}
+}\resizebox{3in}{3in}{%
+\begin{tikzpicture}[x=0.5cm,y=0.5cm,z=0.3cm,>=stealth]
+% The axes
+\draw[->] (xyz cs:x=-13.5) -- (xyz cs:x=13.5) node[above] {$x$};
+\draw[very thick, blue] (xyz cs:y=-13.5) -- (xyz cs:y=13.5) node[right] {$y$};
+\draw[->] (xyz cs:z=-13.5) -- (xyz cs:z=13.5) node[above] {$z$};
+% The thin ticks
+\foreach \coo in {-13,-12,...,13}
+{
+  \draw (\coo,-1.5pt) -- (\coo,1.5pt);
+  \draw (-1.5pt,\coo) -- (1.5pt,\coo);
+  \draw (xyz cs:y=-0.15pt,z=\coo) -- (xyz cs:y=0.15pt,z=\coo);
+}
+% The thick ticks
+% Dashed lines for the points P, Q
+
+% Dots and labels for P, Q
+\node[fill,circle,inner sep=1.5pt,label={}] at (0,0,0) {};
+%\node[fill,circle,inner sep=1.5pt,label={above:$P(3,0,5)$}] at (3,5) {};
+% The origin
+\end{tikzpicture}}
+\end{center}
+Then, we consider their union (shown below)
+\begin{center}
+\resizebox{3in}{3in}{%
+\begin{tikzpicture}[x=0.5cm,y=0.5cm,z=0.3cm,>=stealth]
+% The axes
+\draw[very thick, blue] (xyz cs:x=-13.5) -- (xyz cs:x=13.5) node[above] {$x$};
+\draw[very thick, blue] (xyz cs:y=-13.5) -- (xyz cs:y=13.5) node[right] {$y$};
+\draw[->] (xyz cs:z=-13.5) -- (xyz cs:z=13.5) node[above] {$z$};
+% The thin ticks
+\foreach \coo in {-13,-12,...,13}
+{
+  \draw (\coo,-1.5pt) -- (\coo,1.5pt);
+  \draw (-1.5pt,\coo) -- (1.5pt,\coo);
+  \draw (xyz cs:y=-0.15pt,z=\coo) -- (xyz cs:y=0.15pt,z=\coo);
+}
+% The thick ticks
+% Dashed lines for the points P, Q
+
+% Dots and labels for P, Q
+\node[fill,circle,inner sep=1.5pt,label={}] at (0,0,0) {};
+%\node[fill,circle,inner sep=1.5pt,label={above:$P(3,0,5)$}] at (3,5) {};
+% The origin
+\end{tikzpicture}}
+\end{center}
+Consider now the elements $\{7,0,0\}\in U$ and $\{0,5,0\}\in W$
+\begin{center}
+\resizebox{3in}{3in}{%
+\begin{tikzpicture}[x=0.5cm,y=0.5cm,z=0.3cm,>=stealth]
+% The axes
+\draw[very thick, blue] (xyz cs:x=-13.5) -- (xyz cs:x=13.5) node[above] {$x$};
+\draw[very thick, blue] (xyz cs:y=-13.5) -- (xyz cs:y=13.5) node[right] {$y$};
+\draw[->] (xyz cs:z=-13.5) -- (xyz cs:z=13.5) node[above] {$z$};
+% The thin ticks
+\foreach \coo in {-13,-12,...,13}
+{
+  \draw (\coo,-1.5pt) -- (\coo,1.5pt);
+  \draw (-1.5pt,\coo) -- (1.5pt,\coo);
+  \draw (xyz cs:y=-0.15pt,z=\coo) -- (xyz cs:y=0.15pt,z=\coo);
+}
+% The thick ticks
+% Dashed lines for the points P, Q
+
+% Dots and labels for P, Q
+\node[fill,circle,inner sep=1.5pt,label={}] at (0,0,0) {};
+\node[fill,circle,color=red,inner sep=4pt,label={(7,0,0)}] at (7,0,0) {};
+\node[fill,circle,color=red,inner sep=4pt,label={(0,5,0)}] at (0,5,0) {};
+% The origin
+\end{tikzpicture}}
+\end{center}
+Which are both contained in the union. But their sum, $\{7,5,0\}$ is not contained in the union as seen below.
+\begin{center}
+\resizebox{3in}{3in}{%
+\begin{tikzpicture}[x=0.5cm,y=0.5cm,z=0.3cm,>=stealth]
+% The axes
+\draw[very thick, blue] (xyz cs:x=-13.5) -- (xyz cs:x=13.5) node[above] {$x$};
+\draw[very thick, blue] (xyz cs:y=-13.5) -- (xyz cs:y=13.5) node[right] {$y$};
+\draw[->] (xyz cs:z=-13.5) -- (xyz cs:z=13.5) node[above] {$z$};
+% The thin ticks
+\foreach \coo in {-13,-12,...,13}
+{
+  \draw (\coo,-1.5pt) -- (\coo,1.5pt);
+  \draw (-1.5pt,\coo) -- (1.5pt,\coo);
+  \draw (xyz cs:y=-0.15pt,z=\coo) -- (xyz cs:y=0.15pt,z=\coo);
+}
+% The thick ticks
+% Dashed lines for the points P, Q
+
+% Dots and labels for P, Q
+\node[fill,circle,inner sep=1.5pt,label={}] at (0,0,0) {};
+\node[fill,circle,color=red,inner sep=4pt,label={(7,5,0)}] at (7,5,0) {};
+% The origin
+\end{tikzpicture}}
+\end{center}
+This violates the closure under addition property of a vector space. Thus, we conclude the the union of two vector spaces is not a subspace in general.
+\item Let $\eta=U\cup W$, where $U,W\subseteq V$. Let us now consider whether $\eta$ is itself a subspace of $V$. First, we note, $\vec{0}\in U,W$. Then, by construction, $\vec{0}\in\eta$. Then, we know the zero element is in $\eta$. Next, consider an arbitrary $e\in \eta$. Then, we know that $e\in U \wedge e\in W$. Because $U$ and $W$ are both subspaces, $\forall e \in U,W\ \lambda e\in U,W$ for a scalar $\lambda$. Because $\lambda e\in U,W\ \lambda e \in \eta$. Thus, $\eta$ is closed under scalar multiplication. Finally, consider $x,y\in \eta$. Then, $x,y\in U,W\Rightarrow x+y\in U,W$ because they are both subspaces. Thus, $x+y\in \eta$. Thus it is closed under addition. So, we see that $\eta$ is a subset as well.
+\end{enumerate}\
+\item Let $L:\R^3\to \R^3$ where,
+\[L(x,y,z)=(x+2y+z,\ 2x+y+z,\ 0)\]
+Find $ker(L)$, $im(L)$ and the eigenspaces of $\R^3_{-1},\R^3_3$.
+\begin{enumerate}
+\item To begin, we construct the matrix defined by $L$ as,
+\[\begin{bmatrix}
+1 & 2 & 1 \\
+2 & 1 & 1 \\
+0 & 0 & 0
+\end{bmatrix} \]
+We then set this matrix equal to the zero vector and reduce,
+\[\left[ \begin{array}{ccc|c}
+1 & 2 & 1 & 0\\
+2 & 1 & 1 & 0\\
+0 & 0 & 0 & 0
+\end{array}\right] \]
+\[\left[ \begin{array}{ccc|c}
+1 & 2 & 1 & 0\\
+0 & -3 & -1 & 0\\
+0 & 0 & 0 & 0
+\end{array}\right]\]
+\[\left[ \begin{array}{ccc|c}
+1 & 0 & \frac{1}{3} & 0\\
+0 & 1 & \frac{1}{3} & 0\\
+0 & 0 & 0 & 0
+\end{array}\right] \]
+From this reduction, we glean the following equations,
+\[v_1=-\frac{1}{3}v_3,\ v_2=-\frac{1}{3}v_3\]
+Thus, the kernel of the transformation is,
+\[\lambda \begin{bmatrix}
+-1\\
+-1\\
+3
+\end{bmatrix},\ \lambda\in \R\]
+\item We now consider the image of $L$ as,
+\[im(L)=\begin{bmatrix}
+1 & 2 & 1\\
+2 & 1 & 1\\
+0 & 0 & 0
+\end{bmatrix} \begin{bmatrix}
+x\\
+y\\
+z
+\end{bmatrix}=\begin{bmatrix}
+x+2y+z\\
+2x+y+z\\
+0
+\end{bmatrix}\]
+\item Finally, we consider the two eigenspaces.
+\begin{enumerate}
+\item $\R^3_{-1}:$ Consider the difference, $(L+I)v=0$
+\[L+I=\begin{bmatrix}
+2 & 2 & 1\\
+2 & 2 & 1\\
+0 & 0 & 1
+\end{bmatrix} \]
+Then,
+\[\left[ \begin{array}{ccc|c}
+2 & 2 & 1 & 0\\
+0 & 0 & 0 & 0\\
+0 & 0 & 1 & 0
+\end{array}\right] \]
+\[\left[ \begin{array}{ccc|c}
+1 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 0
+\end{array}\right] \]
+Then we arrive at the equations,
+\[v_1=-v_2,\ v_3=0\]
+So our eigenvector is,
+\[\eta \begin{pmatrix}
+-1\\
+1\\
+0
+\end{pmatrix}, \eta\in \R \]
+So the eigenspace is $span\{\eta \begin{pmatrix}
+-1\\
+1\\
+0
+\end{pmatrix}| \eta\in \R\}$.
+\item $R_3^3:$ Consider the difference, $(L-3I)v=0$
+\[L-3I=\begin{bmatrix}
+-2 & 2 & 1\\
+2 & -2 & 1\\
+0 & 0 & 3
+\end{bmatrix} \]
+Then,
+\[\left[ \begin{array}{ccc|c}
+-2 & 2 & 1 & 0\\
+2 & -2 & 1 & 0\\
+0 & 0 & 3 & 0
+\end{array}\right] \]
+\[\left[ \begin{array}{ccc|c}
+1 & -1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 0
+\end{array}\right] \]
+Then we arrive at the equations,
+\[v_1=v_2,\ v_3=0\]
+So our eigenvector is,
+\[\eta \begin{pmatrix}
+1\\
+1\\
+0
+\end{pmatrix}, \eta\in \R \]
+So the eigenspace is $span\{\eta \begin{pmatrix}
+1\\
+1\\
+0
+\end{pmatrix}| \eta\in \R\}$.
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+\end{document}
