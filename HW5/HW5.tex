@@ -1,0 +1,101 @@
+\documentclass[letterpaper,10pt]{article}
+\usepackage[top=2cm, bottom=1.5cm, left=1cm, right=1cm]{geometry}
+\usepackage{amsmath, amssymb, amsthm,graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{\today}
+\chead{Algebraic Structures Assignment 5}
+\rhead{Justin Hood}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newtheorem{lem}{Lemma}
+
+\begin{document}
+\begin{enumerate}
+\item Consider the space $B^n$, the set of $n\times 1$ vectors with entries from the field $\Z_2$.
+\begin{enumerate}
+\item We consider the cardinality of $B^n$. Because each entry in a vector $u$ from $B^3$ is from the set $(0,1)$, we may calculate $|B^3|=2^3=8$.
+\item We now consider a possible span $S$ over the space as,
+\[S=\left\{ \begin{pmatrix}
+1\\0\\0
+\end{pmatrix}, \begin{pmatrix}
+0\\1\\0
+\end{pmatrix}, \begin{pmatrix}
+0\\0\\1
+\end{pmatrix}\right\} \]
+\item We now test whether this set actually spans $B^3$. Let the three vectors from above be denoted as $e_1,\ e_2,\ e_3$.
+\begin{align*}
+\begin{pmatrix}
+1\\0\\0
+\end{pmatrix} &= e_1\\
+\begin{pmatrix}
+0\\1\\0
+\end{pmatrix} &= e_2\\
+\begin{pmatrix}
+0\\0\\1
+\end{pmatrix} &= e_3\\
+\begin{pmatrix}
+1\\1\\0
+\end{pmatrix} &= e_1+e_2\\
+\begin{pmatrix}
+1\\0\\1
+\end{pmatrix} &= e_1+e_3\\
+\begin{pmatrix}
+0\\1\\1
+\end{pmatrix} &= e_2+e_3\\
+\begin{pmatrix}
+0\\0\\0
+\end{pmatrix} &= 0e_1+0e_2+0e+3\\
+\begin{pmatrix}
+1\\1\\1
+\end{pmatrix} &= e_1+e_2+e_3
+\end{align*}
+Hence, we see that the vectors span the space.
+\item Finally, we consider the idea of spanning the space with two vectors. Let $u$ and $v$ be two vectors that supposedly span $B^3$. By the definition of the field $\Z_2$, we know that multiplying $u$ or $v$ by an integer greater than or equal to 2 may be mapped to the multiplication by $0$ or $1$. Thus, there are $2^2$ possible linear combinations of $u$ and $v$. i.e.,
+\begin{align*}
+0u+0v\ &\ 1u+0v\\
+1u+0v\ &\ 1u+1v
+\end{align*}
+But, we know the cardinality of $B^3=8$. So, we see that $u$ and $v$ cannot span the space. So, we see that $B^3$ cannot be spanned by two vectors.
+\end{enumerate}
+\item Consider now, $e_i\in \R^n$ being the vector of zeros with a $1$ in the $i^{th}$ position. 
+\begin{enumerate}
+\item Let $E=\{e_1,e_2,\ldots,e_n\}$. We shall test for linear independence.\\
+Let $\Gamma$ be an arbitrary element of $E$. If $E$ is linearly dependent, then we may write,
+\[\Gamma=\sum_i k_i\hat{e}_i,\ \hat{e}_i\in E\setminus \Gamma\]
+Without loss of generality, we shall assume that $\Gamma$ has a $1$ in the $1^{st}$ position. Then, $E\setminus \Gamma$, contains vectors with $1's$ in every other position. But, any sum of these elements will have the following form,
+\[\begin{pmatrix}
+0\\
+\lambda_2\\
+\lambda_3\\
+\vdots\\
+\lambda_n
+\end{pmatrix}\]
+But, for any set $\lambda_i$ this can never equal $\Gamma$. Thus, the set is linearly independent.
+\item Consider now, a vector $v\in \R^n$. This vector takes the form,
+\[v=\begin{pmatrix}
+v_1\\ v_2\\ \vdots \\v_n
+\end{pmatrix}\]
+Consider now,
+\[\sum_{i=1}^n(v\cdot e_i)e_i\]
+By the definition of $e_i$, we know that,
+\[v\cdot e_i=v_i\]
+As the only non-zero entry of $e_i$ is a $1$ in the $i^{th}$ position. Then, $(v\cdot e_i)e_i$ is the vector of zeros with the $i^{th}$ position equal to $v_i$. So,
+\[\sum_{i=1}^n(v\cdot e_i)e_i=\begin{pmatrix}
+v_1\\0\\0\\\vdots \\0
+\end{pmatrix}+\begin{pmatrix}
+0\\v_2\\0\\\vdots\\0
+\end{pmatrix}+\ldots+\begin{pmatrix}
+0\\0\\0\\\vdots\\v_n
+\end{pmatrix}=\begin{pmatrix}
+v_1\\v_2\\v_3\\\vdots\\v_n
+\end{pmatrix}=v \]
+\item Finally, we note,
+\[span(\{e_1,e_2,\ldots,e_n\})=\R^n\]
+\end{enumerate}
+\end{enumerate}
+\end{document}
