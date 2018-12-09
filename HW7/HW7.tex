@@ -1,0 +1,74 @@
+\documentclass[letterpaper,10pt]{article}
+\usepackage[top=2cm, bottom=1.5cm, left=1cm, right=1cm]{geometry}
+\usepackage{amsmath, amssymb, amsthm,graphicx,enumitem}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{\today}
+\chead{Algebraic Structures}
+\rhead{Justin Hood}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newtheorem{lem}{Lemma}
+
+\begin{document}
+\begin{description}
+\item[Question 2.] Let $L: V\to W$ be a linear transformation. Show that $ker(L)=\{0_V\}$ if and only if L is one-to-one. 
+\begin{proof}\hfill\\
+$\Rightarrow$\\
+Let $L$ be the linear transformation defined above, and consider first the case wherein $ker(L)=\{0_V\}$. Then, let $x,y\in V$ exist, such that $f(x)=f(y)$. Then,
+\begin{align*}
+f(x)&=f(y)\\
+f(x)-f(y) &= 0\\
+f(x-y) &= 0 && \text{By Linearity}\\
+x-y &\in ker(L) && \text{By definition of the kernel}
+\end{align*}
+Then, because $ker(L)=\{0_V\}$,
+\begin{align*}
+x-y &= 0_V
+x &= y
+\end{align*}
+Thus, we have shown that the trivial kernel induces an injective transformation.\\
+$\Leftarrow$\\
+Now, let us consider the case where $L$ is injective. Let $x\in ker(L)$. Then, by definition,
+\[L(x)=0\]
+But, because $L$ is linear, we know that
+\[L(0_V)=0\]
+So,
+\[L(x)=0=L(0_V)\]
+Because $L$ is injective, we note,
+\[x=0_V\]
+So, 
+\[ker(L)=0_V\]
+Thus, $L$ being injective has induced the trivial kernel, as desired.
+\end{proof}
+\item[Question 6.] Let $P_n(x)$ be the space of polynomials in $x$ of degree less than or equal to $n$, and let the derivative operator,
+\[\frac{d}{dx}:P_n(x)\to P_n(x)\]
+\begin{enumerate}[label=\alph*.]
+\item First, we consider the kernel of this operator. By definition, this is the set of elements in $P_n(x)$ which map to zero under the derivative. For polynomials, this is trivially the set of constants, or any function of the form,
+\[P_0(x)=cx^0,\ c\in \R\]
+Thus, we conclude that the kernel of the derivative has degree $0$.
+\item Next, we consider the image of this operator. For polynomials, the degree of the derivative is simply one less than the original polynomial. Thus, for a polynomial of degree less than or equal to $n$, the derivative will have degree less than or equal to $n-1$. So, the dimension of the image of the derivative is $n-1$. If the target space is changed from $P_n(x)$ to either $P_{n-1}(x)$ or $P_{n+1}(x)$, the dimension of the image will remain the same, as it is entirely dependent on the domain of the transformation.
+\end{enumerate}
+We now consider $P_2(x,y)$ which is the space of polynomials of degree $\leq 2$, and the operator
+\[L:=\frac{\partial}{\partial x}+\frac{\partial}{\partial y}:P_2(x,y)\to P_2(x,y)\]
+We consider the kernel of this operator. An element $\eta\in ker(L)$ must be defined, such that
+\[\frac{\partial \eta}{\partial x}+\frac{\partial \eta}{\partial y}\]
+From this definition, we may conclude that the kernel of $L$ is the set,
+\[ker(L):=\{0,\ x+y,\ x-y\}\]
+Writing this in basis form, we need,
+\[\{x\begin{bmatrix}
+1\\0
+\end{bmatrix}+y\begin{bmatrix}
+0\\-1
+\end{bmatrix}\}\]
+From our set definition, we see that the kernel of the transformation has degree 1. We also note that $L(P_2(x,y))$ will map to $P_1(x,y)$ due to the polynomial structure of $P$. Then, we consider the dimension formula,
+\[dim(V)=dim(ker(V))+dim(L(V))\]
+\[dim(P_2)=dim(ker(P_2))+dim(P_1)\]
+\[2=1+1\]
+As desired.
+\end{description}
+\end{document}
