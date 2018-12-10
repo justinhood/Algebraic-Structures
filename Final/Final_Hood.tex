@@ -1,0 +1,365 @@
+\documentclass[letterpaper,10pt]{article}
+\usepackage[top=2cm, bottom=1.5cm, left=1cm, right=1cm]{geometry}
+\usepackage{amsmath, amssymb, amsthm,graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{\today}
+\chead{Algebraic Structures Final}
+\rhead{Justin Hood}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newtheorem{lem}{Lemma}
+
+\begin{document}
+\begin{enumerate}
+\item For which values of $a$ does $U=\text{span}\{<2,0,2>,<2,4,-6>,<a,2,0>\}=\R^3$? For any special values at which $U\neq \R^3$, express $U$ as the span of the least number of vectors possible. Give the dimension of $U$ for these cases.
+\begin{enumerate}
+\item To begin, we consider placing the vectors in $U$ in matrix form and row reducing. Thus, we compute,
+\begin{align*}
+\begin{bmatrix}
+2 & 0 & 2\\
+2 & 4 & -6\\
+a & 2 & 0
+\end{bmatrix} &= \begin{bmatrix}
+1 & 0 & 1\\
+1 & 2 & -3\\
+a & 2 & 0
+\end{bmatrix} && R_1=\frac{R_1}{2},\ R_2=\frac{R_2}{2}\\
+&=\begin{bmatrix}
+1 & 0 & 1\\
+0 & 2 & -4\\
+0 & 2 & -a
+\end{bmatrix} && R_2=R_2-R_1,\ R_3=R_3-aR_1
+\end{align*}
+At this point, we clearly see that in order for $U$ to span $\R^3$, $a\neq 4$, as this would reduce the dimension of this matrix. So, assuming $a\neq 4$,
+\begin{align*}
+\begin{bmatrix}
+1 & 0 & 1\\
+0 & 2 & -4\\
+0 & 2 & -a
+\end{bmatrix} &= \begin{bmatrix}
+1 & 0 & 1\\
+0 & 2 & -4\\
+0 & 0 & -a+4
+\end{bmatrix} && R_3=R_3-R_2\\
+&=\begin{bmatrix}
+1 & 0 & 1\\
+0 & 2 & -4\\
+0 & 0 & 1
+\end{bmatrix} && R_3=\frac{R_3}{-a+4}\\
+&= \begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{bmatrix} && R_1=R_1-R_3,\ R_2=R_2-R_3,\ R_2=\frac{R_2}{2}
+\end{align*}
+So, we see that for all values of $a\neq 4$, $U$ spans $\R^3$, as it reduces to the trivial basis.
+\item We now consider the case of $a=4$. In this case, we return to the calculations from before, and evaluate,
+\begin{align*}
+\begin{bmatrix}
+1 & 0 & 1\\
+0 & 2 & -4\\
+0 & 2 & -a
+\end{bmatrix} &= \begin{bmatrix}
+1 & 0 & 1\\
+0 & 2 & -4\\
+0 & 2 & -4
+\end{bmatrix}\\
+&=\begin{bmatrix}
+1 & 0 & 1\\
+0 & 1 & -2\\
+0 & 0 & 0
+\end{bmatrix} && R_3=R_3-R_2,\ R_2=\frac{R_2}{2}
+\end{align*}
+From here, we see that $U$ is the span of only two vectors, $U=\text{span}\{<1,0,1>,<0,1,-2>\}$
+\item From here, we see that the dimension of $U$ is two.
+\end{enumerate}
+\newpage
+\item Let $L$ be the linear transformation from $\R^3$ to $\R^3$,
+\[L(x,y,z)=(2x+y-z,-2x-4y+2z,-x-y+2z)\]
+Find the eigenvalues and eigenvectors.\\\\\\
+To begin, we first write $L$ in matrix form as,
+\[L=\begin{bmatrix}
+2 & 1 & -1\\
+-2 & -4 & 2\\
+-1 & -1 & 2
+\end{bmatrix} \]
+We then compute the eigenvalues as the solution to $(L-\lambda I)v=0$. This is done by solving the determinant of the $L-\lambda I$ matrix as follows:
+\begin{align*}
+\begin{vmatrix}
+2-\lambda & 1 & -1\\
+-2 & -4-\lambda & 2\\
+-1 & -1 & 2-\lambda
+\end{vmatrix} &= (2-\lambda)\big((-4-\lambda)(2-\lambda)-2(-1)\big)-\big((2-\lambda)(-2)-2(-1)\big)-\big((-2)(-1)-(-1)(-4-\lambda)\big)\\
+&=(2-\lambda)\big(\lambda^2+2\lambda-6)-(2\lambda-2)-(-\lambda-2)\\
+&=-\lambda^3+9\lambda-8\\
+0 &= -(\lambda-1)(\lambda^2+\lambda-8)
+\end{align*}
+Solving this, we see that trivially $\lambda_1=1$ is a solution. We then use the quadratic formula to solve for the remaining two solutions as,
+\[\lambda_{2,3}=\frac{-1\pm \sqrt{1^2-4(1)(-8)}}{2}=\frac{-1\pm \sqrt{33}}{2}\]
+With these eigenvalues in hand, we may compute the corresponding eigenvectors as follows.\\
+$\lambda_1=1$
+\begin{align*}
+L-\lambda_1 I &= \begin{bmatrix}
+1 & 1 & -1\\
+-2 & -5 & 2\\
+-1 & -1 & 1
+\end{bmatrix}\\
+&= \begin{bmatrix}
+1 & 1 & -1\\
+0 & -3 & 0\\
+0 & 0 & 0
+\end{bmatrix} && R_3=R_3+R_1,\ R_2=R_2+2R_1
+\end{align*}
+This yields the solution system,
+\[v_1+v_2-v_3=0\]
+\[-3v_2=0\Rightarrow v_2=0\]
+Back substituting, we find then
+\[v_1-v_3=0\Rightarrow v_1=v_3\]
+The corresponding eigenvector is then,
+\[\lambda_1=1\Rightarrow e_1=\begin{pmatrix}
+1\\0\\1
+\end{pmatrix}\]
+Next, $\lambda_2=\frac{-1+\sqrt{33}}{2}$
+\begin{align*}
+L-\lambda_2 I &= \begin{bmatrix}
+2-\frac{-1+\sqrt{33}}{2} & 1 & -1\\
+-2 & -4-\frac{-1+\sqrt{33}}{2} & 2\\
+-1 & -1 & 2-\frac{-1+\sqrt{33}}{2}
+\end{bmatrix}\\
+&=\begin{bmatrix}
+\frac{5-\sqrt{33}}{2} & 1 & -1\\
+-2 & \frac{-7-\sqrt{33}}{2} & 2\\
+-1 & -1 & \frac{5-\sqrt{33}}{2}
+\end{bmatrix}\\
+&=\begin{bmatrix}
+-2 & \frac{-7-\sqrt{33}}{2} & 2\\
+\frac{5-\sqrt{33}}{2} & 1 & -1\\
+-1 & -1 & \frac{5-\sqrt{33}}{2}
+\end{bmatrix} && R_1\leftrightarrow R_2\\
+&=\begin{bmatrix}
+-2 & \frac{-7-\sqrt{33}}{2} & 2\\
+0 & \frac{3+\sqrt{33}}{4} & \frac{3-\sqrt{33}}{2}\\
+-1 & -1 & \frac{5-\sqrt{33}}{2}
+\end{bmatrix} && R_2=R_2+\frac{5-\sqrt{33}}{2}R_1\\
+&=\begin{bmatrix}
+-2 & \frac{-7-\sqrt{33}}{2} & 2\\
+0 & \frac{3+\sqrt{33}}{4} & \frac{3-\sqrt{33}}{2}\\
+0 & \frac{3+\sqrt{33}}{4} & \frac{3-\sqrt{33}}{2}
+\end{bmatrix} && R-3=R_3-\frac{R_1}{2}\\
+&=\begin{bmatrix}
+-2 & \frac{-7-\sqrt{33}}{2} & 2\\
+0 & 1 & \frac{-7+\sqrt{33}}{2}\\
+0 & 0 & 0
+\end{bmatrix} && R_3=R_3-R_2,\ R_2=\frac{R_2}{\frac{3+\sqrt{33}}{4}}\\
+&=\begin{bmatrix}
+-2 & 0 & -2\\
+0 & 1 & \frac{-7+\sqrt{33}}{2}\\
+0 & 0 & 0
+\end{bmatrix} && R_1=R_1-\frac{-7-\sqrt{33}}{2}R_2\\
+&=\begin{bmatrix}
+1 & 0 & 1\\
+0 & 1 & \frac{-7+\sqrt{33}}{2}\\
+0 & 0 & 0
+\end{bmatrix} && R_1=\frac{-R_1}{2}
+\end{align*}
+This yields the solution equations,
+\[v_1+v_3 = 0\Rightarrow v_1=-v_3\]
+\[v_2+\frac{-7+\sqrt{33}}{2}v_3=0\Rightarrow v_2=\frac{7-\sqrt{33}}{2}v_3\]
+Which yield the eigenvector,
+\[\lambda_2=\frac{-1+\sqrt{33}}{2}\Rightarrow e_2=\begin{pmatrix}
+-1\\\frac{7-\sqrt{33}}{2}\\1
+\end{pmatrix}\]
+Finally, $\lambda_3=\frac{-1-\sqrt{33}}{2}$
+\begin{align*}
+L-\lambda_3 I &= \begin{bmatrix}
+2-\frac{-1-\sqrt{33}}{2} & 1 & -1\\
+-2 & -4-\frac{-1-\sqrt{33}}{2} & 2\\
+-1 & -1 & 2-\frac{-1-\sqrt{33}}{2}
+\end{bmatrix}\\
+&=\begin{bmatrix}
+\frac{5+\sqrt{33}}{2} & 1 & -1\\
+-2 & \frac{-7+\sqrt{33}}{2} & 2\\
+-1 & -1 & \frac{5+\sqrt{33}}{2}
+\end{bmatrix}\\
+&=\begin{bmatrix}
+\frac{5+\sqrt{33}}{2} & 1 & -1\\
+0 & \sqrt{33}-6 & \frac{9-\sqrt{33}}{2}\\
+-1 & -1 & \frac{5+\sqrt{33}}{2}
+\end{bmatrix} && R_2=R_2-\frac{5-\sqrt{33}}{2}R_1\\
+&=\begin{bmatrix}
+\frac{5+\sqrt{33}}{2} & 1 & -1\\
+0 & \sqrt{33}-6 & \frac{9-\sqrt{33}}{2}\\
+0 & \frac{-9+\sqrt{33}}{4} & \frac{15+\sqrt{33}}{4}
+\end{bmatrix} && R_3=R_3-\frac{5-\sqrt{33}}{4}\\
+&=\begin{bmatrix}
+\frac{5+\sqrt{33}}{2} & 1 & -1\\
+0 & 1 & \frac{-7-\sqrt{33}}{2}\\
+0 & \sqrt{33}-6 & \frac{9-\sqrt{33}}{2}
+\end{bmatrix} && R_2\leftrightarrow R_3,\ R_2=\frac{R_2}{\frac{-9+\sqrt{33}}{4}}\\
+&=\begin{bmatrix}
+\frac{5+\sqrt{33}}{2} & 1 & -1\\
+0 & 1 & \frac{-7-\sqrt{33}}{2}\\
+0 & 0 & 0
+\end{bmatrix} && R_3=R_3-(\sqrt{33}-6)R_2\\
+&=\begin{bmatrix}
+\frac{5+\sqrt{33}}{2} & 0 & \frac{5+\sqrt{33}}{2}\\
+0 & 1 & \frac{-7-\sqrt{33}}{2}\\
+0 & 0 & 0
+\end{bmatrix} && R_1-R_2\\
+&=\begin{bmatrix}
+1 & 0 & 1\\
+0 & 1 & \frac{-7-\sqrt{33}}{2}\\
+0 & 0 & 0
+\end{bmatrix} && R_1=\frac{R_1}{\frac{5+\sqrt{33}}{2}}\\
+\end{align*}
+This yields the solution equations,
+\[v_1+v_3=0\Rightarrow v_1=-v_3\]
+\[v_2+\frac{-7-\sqrt{33}}{2} v_3 = 0\Rightarrow v_2=\frac{7+\sqrt{33}}{2}v_3\]
+The corresponding eigenvector is then,
+\[\lambda_3=\frac{-1-\sqrt{33}}{2} \Rightarrow e_3=\begin{pmatrix}
+-1\\\frac{7+\sqrt{33}}{2}\\1
+\end{pmatrix}\]\\
+We now test the independence of the vectors with the determinant of the matrix they produce,
+\[\begin{vmatrix}
+1 & -1 & -1\\
+0 & \frac{7-\sqrt{33}}{2} & \frac{7+\sqrt{33}}{2}\\
+1 & 1 & 1
+\end{vmatrix}=\frac{7-\sqrt{33}}{2}-\frac{7+\sqrt{33}}{2}-\frac{7+\sqrt{33}}{2}+\frac{7-\sqrt{33}}{2}=-2\sqrt{33}\neq0\]
+So, we see that they are independent.
+\addtocounter{enumi}{1}
+\newpage
+\item Let $L$ be a linear transformation from vector space $V$ to vector space $W$, with $V$ a finite dimensional vector space. Define $\text{ker}(L)$ and $L(V)$ and show that they are vector spaces. Then prove that $dim(V)=dim(ker(L))+dim(L(V))$
+\begin{enumerate}
+\item To begin, we consider the kernel and image of $V$ under $L$.
+\begin{enumerate}
+\item The kernel of $L$, denoted as ker$(L)$ is the set of elements in $V$ which map to the zero vector of $W$.
+\[\text{ker}(L)=\{v\in V\big| L(v)=0_W\}\]
+We now test for the conditions of a vector space, namely closure under addition and scalar multiplication, and that the zero vector of $V$ is in the kernel.\\
+First, let $x,y\in \text{ker}(L)$. Then,
+\begin{align*}
+L(x+y) &= L(x)+L(y) && \text{By linearity}\\
+&= 0_W+0_W && \text{By definition of the kernel}\\
+&= 0_W
+\end{align*}
+Thus, we see that the kernel is closed under addition.\\
+Next, let $x\in \text{ker}(L)$ and let $\lambda$ be a scalar value. Then,
+\begin{align*}
+L(\lambda x) &= \lambda L(x) && \text{By linearity}\\
+&= \lambda 0_W && \text{By construction of $x$}\\
+&= 0_W
+\end{align*}
+Thus, we see that the kernel is closed under scalar multiplication.\\
+Finally, consider an arbitrary $v\in V$. Then,
+\begin{align*}
+L(0_V) &= L(v+(-v)) && v-v=0_V
+&=L(v)+L(-v) && \text{By linearity}
+&=L(v)-L(v) && \text{By linearity}
+&=0_W
+\end{align*}
+Thus, we see that the zero vector of $V$ is in the kernel of the transformation. Thus, we conclude that the kernel is a vector space as well.
+\item Next, we consider the image of $V$ under $L$, $L(V)$. We shall test the same conditions as above to see that it is a vector space. First, we consider $x,y\in L(V)$. By construction, we know that there exist $\eta,\gamma\in V$ such that,
+\[L(\eta)=x,\ L(\gamma)=y\]
+Then,
+\[L(\eta)+L(\gamma) = L(\eta+\gamma)\in L(V)\]
+Thus, we see that $L(V)$ is closed under addition. Next, we consider $x\in L(V)$ and a scalar value $\lambda$. Then, as before, we know that $\exists \eta \in V$ such that $L(\eta)=x$. Then,
+\[L(\lambda \eta)=\lambda L(\eta)=\lambda x\]
+Thus, we see that $L(V)$ is closed under scalar multiplication. Finally, we consider the zero vectors inclusion. We note that the kernel of $L$ is clearly contained in $L(V)$. Thus, from before, we know that the zero vector in the kernel, and thus in $L(V)$. So we may conclude that $L(V)$ is a vector space as well.
+\end{enumerate}
+\item We now consider the ``Dimension Formula"
+\[\text{dim}V=\text{dim}[\text{ker}L]+\text{dim}L(V)\]
+\begin{proof}
+Let $L: V\to W$, with $V$ being a finite dimensional vector space. First, consider the set \[S:=\{b_1,\ldots,b_p,e_1,\ldots,e_q\}\]
+Where the elements $b_i$ are a basis for the kernel of $L$, and the elements $e_i$ extend the set to be a full basis for the space $V$. It is worth noting now that,
+\[\text{dim}V=p+q\]
+and
+\[\text{dim}[\text{ker}L]=p\]
+Now, we consider an arbitrary vector $w\in L(V)$. Then, we may write $w$ as follows:
+\begin{align*}
+w &= L(c_1b_1+\cdots+c_pb_p+d_1e_1+\cdots+d_qe_q)\\
+&= L(c_1b_1)+\cdots+L(c_pb_p)+L(d_1e_1)+\cdots+L(d_qe_q) && \text{By linearity}\\
+&= c_1L(b_1)+\cdots+c_pL(b_p)+d_1L(e_1)+\cdots+d_qL(e_q) && \text{Also by linearity}\\
+&=d_1L(e_1)+\cdots+d_qL(e_q) && \text{By definition of the kernel}
+\end{align*}
+So,
+\[L(V)=\text{span}\{L(e_1),\ldots,L(e_q)\}\]
+To show independence, we assume to the contrary that it is not. Then, by definition there are constants $d_i$ which are not all zero such that
+\begin{align*}
+0 &= d_1L(e_1)+\ldots+d_qL(e_q)\\
+&=L(d_1e_1+\ldots+d_qe_q)
+\end{align*}
+But, from before, we defined $e_i$ to be linearly independent. So, $d_1e_1+\ldots+d_qe_q\neq 0$. Because $d_1e_1+\ldots+d_qe_q$ is not the zero vector, but still maps to zero, we know that $d_1e_1+\ldots+d_qe_q$ is in the kernel of $L$. Thus, from before, $d_1e_1+\ldots+d_qe_q$ is within the span of $\{b_1,\ldots,b_p\}$ as $b_i$ is a basis for the kernel. This means that $S$ is not a basis for $V$, a contradition. Thus, we conclude that $L(V)$ is linearally independent. So, dim$L(V)=q$. So, we have,
+\begin{align*}
+\text{dim}V &= \text{dim}[\text{ker}L]+\text{dim}L(V)\\
+p+q &= (p)+(q)
+\end{align*} 
+As desired.
+\end{proof}
+\end{enumerate}
+\newpage
+\item Let $\{a_n\}_{n\geq 1}$ be a subadditive sequence of positive real numbers. Prove that $\lim_{n\to\infty}\frac{a_n}{n}$ exists.\\
+A subadditive sequence is a sequence where 
+\[a_{n+m}\leq a_n+a_m,\ n,m\geq 1\]
+i.e. the future values of the sequence are limited by the past values. We shall now attempt the proof.
+\begin{proof}
+Let $\{a_n\}_{n\geq 1}$ be a subadditive sequence of positive real numbers, and let $M$ be defined as the smallest value $\frac{a_n}{n}$ for $n\geq 1$. Then, consider
+\[M+\delta>\frac{a_n}{n},\ \delta>0\]
+For some $n$ that depends on $\delta$. If we move $\delta$ away from our mimimum value of $a_n/n$, we have the inequality above. Then, we arrive at $a_n<n(M+\delta)$ for our chosen $n$. We now consider, $\mu=max(a_i)$ for $i\in 1,2,\ldots, n$, and $p\geq n$. By definition of the integers, we may now write, $p=kn+r$, with $k,r\in \Z$, and $0\leq r \leq n$. Then,
+\[a_p = a_{n+n+\ldots+n+r}\leq ka_n+a_r\]
+Noting that $r$ is bounded by $n$, we conclude that $a_r\leq \mu$. Thus,
+\[a_p\leq ka_n+a_r\leq ka_n+\mu\]
+We now divide this equality to obtain a more familiar form,
+\[\frac{a_p}{p}\leq \frac{ka_n}{p}+\frac{\mu}{p}\]
+From before, we know that $a_n$ is strictly bounded by $(M+\delta)n$. So, we may write,
+\[\frac{a_p}{p}< \frac{kn(M+\delta)}{p}+\frac{\mu}{p}\]
+Finally, we take the limit as $p\to \infty$. On the right, we may clearly see that $\mu/p$ will tend to zero as $p$ increases. This leaves
+\[\lim_{p\to \infty}\frac{kn}{p}(M+\delta)\]
+From our definition of $p$, we see that this fraction will simplify to $1$ in the limit, and then we are left with $M+\delta$. So,
+\[\lim_{p\to \infty} \frac{a_p}{p}<M+\delta\]
+Because $\delta$ is arbitrary, we may allow it to be very small, resulting in our limit being bounded above by the smallest value of the original sequence $a_n/n$. Because $M$ exists and is finite, we know that the limit is finite as well.
+\end{proof}
+\newpage
+\addtocounter{enumi}{1}
+\item Let $X$ be the shift space over the finite alphabet $\{0,1\}$ with the only restriction being the block $\{00\}$. Find the entropy of the space.
+\begin{enumerate}
+\item We consider the shift space $X$ from above. We have our finite alphabet as the set $\mathcal{A}=\{0,1\}$ and our restrictive set $\mathcal{F}=\{00\}$. Let $B_n(x)$ be a block of length $n$ in $X$, with elements $x$ from the alphabet $\mathcal{A}$. Let us consider the first few values of $B$ in order that we may get a feel for how it looks.
+\[B_1(x)=\{0\},\ \{1\}\]
+\[B_2(x)=\{01\},\ \{10\},\ \{11\}\]
+We now consider an arbitrary $B_{n+2}$ and consider the size of said set. To progress from $B_n$ to $B_{n+1}$ for any $n$, we must add either a $1$ or a $0$ to the exisiting block, noting the restriction.  In order for a block to be in $B_{n+2}$, it falls into two categories. The first of which is the block,
+\[\underbrace{\ldots}_{n+1}\cup 1\]
+Here, we have taken an arbitrary element of $B_{n+1}$ and appended a $1$ to it. We know that this block will be in $B_{n+2}$, because the addition of a $1$ at the end of any string in $B_{n+1}$ cannot violate our restriction on the space. The only other option for this space are blocks of the form,
+\[\underbrace{\underbrace{\ldots }_{n}1}_{n+1}\cup 0\]
+From before, we know that we can always add a $1$ to a block and remain in $X$. But, in order to add a zero to the end of a block, we must first check to make sure that the set ends in a $1$, else, we will be in violation of our restriction.\\
+So, when adding a $1$ to a block, we have $|B_{n+1}|$ possibilities to add to, whereas in order to add a $0$ to the set, we have only $|B_n|$ possible sets to append to. Thus, we arrive at the function for the size of $B_{n+2}$,
+\[|B_{n+2}|=|B_{n+1}|+|B_{n}|\]
+The entropy of this system is,
+\[E=\frac{|B_{n+1}|}{|B_n|}\]
+We note now that our formula for the size of $B_{n+2}$ is actually a formula for the Fibonacci sequence. From above, we know that 
+\[|B_1|=2,\ |B_2|=3\]
+So, we see that
+\[|B_3|=5,\ |B_4|=8, \ldots\]
+Because this is functionally similar to the Fibonacci sequence, we may consider the form,
+\[F_n=\alpha c_1^n+\beta c_2^n,\ n\geq 1\]
+Then, $F_{n+2}$ becomes
+\[\alpha c_1^{n+2}+\beta c_2^{n+2}=\alpha c_1^{n+1}+\beta c_2^{n+1}+\alpha c_1^{n}+\beta c_2^{n}\]
+Simplifying, we find, 
+\[\alpha c_1^n(c_1^2-c_1-1)+\beta c_2^n(c_2^2-c_2-1)=0\]
+This is only the case when the quadratic expressions are zero, and $c_1\neq c_2$. Solving, we find the solutions to be,
+\[c_1,c_2=\frac{1\pm \sqrt{5}}{2}\]
+Let $c_1$ be the larger of the two values. Then,
+\[F_n=\alpha \frac{1+\sqrt{5}}{2}^n+\beta \frac{1-\sqrt{5}}{2}^n\]
+Rewriting this symbolically, and then factoring, we arrive at,
+\[F_n=\alpha c_1^n(1+\frac{\beta}{\alpha}\bigg(\frac{c_2}{c_1}\bigg)^n)\]
+Because we have defined $c_1>c_2$, we note that in the limit of $n$, 
+\[F_n=\alpha c_1^n\]
+Finally then,
+\[\frac{F_{n+1}}{F_n}=\frac{\alpha c_1^{n+1}}{\alpha c_1^n}=c_1=\frac{1+\sqrt{5}}{2}\]
+Our entropy is then defined as,
+\[E=\frac{|B_{n+1}|}{|B_n|}=\frac{F_{n+1}}{F_n}=\frac{1+\sqrt{5}}{2}\]
+\end{enumerate}
+\end{enumerate}
+\end{document}
